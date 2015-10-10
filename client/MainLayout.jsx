@@ -1,4 +1,8 @@
 MainLayout = React.createClass({
+  logOut() {
+    event.preventDefault();
+    AccountsTemplates.logout();
+  },
   render() {
     return (
       <span>
@@ -6,6 +10,7 @@ MainLayout = React.createClass({
           <a className="active item">Home</a>
           <a className="item">Friends</a>
           <a className="item">Requests</a>
+          <a className="item" onClick={this.logOut}>Logout</a>
         </div>
         {this.props.content}
       </span>
