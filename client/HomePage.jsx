@@ -3,6 +3,10 @@ HomePage = React.createClass({
     userid: React.PropTypes.string.isRequired,
     friendids: React.PropTypes.array.isRequired
   },
+  mixins: [ReactMeteorData],
+  getMeteorData() {
+    Geolocation.latLng();
+  },
   componentDidMount() {
     GoogleMaps.load();
   },
