@@ -4,6 +4,15 @@ HomePage = React.createClass({
     friendids: React.PropTypes.array.isRequired
   },
   render() {
-    return <h1>hp</h1>;
+    return (
+      <div>
+        <ProfileList
+        userIdArray={this.props.friendids}
+        userId={this.props.userid}
+        listTitle={'Directions'}
+        listType={['directions']}
+        />
+      </div>
+    );
   }
 });
