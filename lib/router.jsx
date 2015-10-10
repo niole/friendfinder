@@ -10,8 +10,8 @@ FlowRouter.route("/navigate/:otherUserId", {
   action: function(params) {
     ReactLayout.render(MainLayout, {
       content: <HomePage
-                userid={Session.userId}
-                friendids={params.otherUserId}
+                userid={Meteor.userId()}
+                otheruserid={params.otherUserId}
                 />
     });
   }

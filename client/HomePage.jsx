@@ -1,7 +1,7 @@
 HomePage = React.createClass({
   propTypes: {
     userid: React.PropTypes.string.isRequired,
-    friendids: React.PropTypes.array.isRequired
+    otheruserid: React.PropTypes.array.isRequired
   },
   mixins: [ReactMeteorData],
   getMeteorData() {
