@@ -5,7 +5,22 @@ HomePage = React.createClass({
   },
   mixins: [ReactMeteorData],
   getMeteorData() {
-    Geolocation.latLng();
+    console.log(this.props.friendids);
+
+    if(Geolocation.latLng()) {
+      var loc = Geolocation.latLng();
+      console.log(loc);
+
+      Friends.update({_id: this.props.userid},
+                     {$set: {location: loc}},
+                     function(err) {
+                       if (err) {
+                         console.error(err);
+                       }
+                     });
+    }
+
+
   },
   componentDidMount() {
     GoogleMaps.load();
