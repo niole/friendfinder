@@ -6,16 +6,12 @@ FlowRouter.route("/", {
   }
 });
 
-FlowRouter.route("/:userid/:userstring", {
+FlowRouter.route("/navigate/:otherUserId", {
   action: function(params) {
-    var friendids = [];
-    if (params.userstring.length > 1) {
-      friendids = params.userstring.split("&");
-    }
     ReactLayout.render(MainLayout, {
       content: <HomePage
-                userid={params.userid}
-                friendids={friendids}
+                userid={Session.userId}
+                friendids={params.otherUserId}
                 />
     });
   }
