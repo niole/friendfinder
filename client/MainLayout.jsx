@@ -2,6 +2,7 @@ MainLayout = React.createClass({
   logOut() {
     event.preventDefault();
     AccountsTemplates.logout();
+    FlowRouter.go('/');
   },
   render() {
     return (
