@@ -19,8 +19,6 @@ HomePage = React.createClass({
                        }
                      });
     }
-
-
   },
   componentDidMount() {
     GoogleMaps.load();
