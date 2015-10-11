@@ -8,9 +8,9 @@ MainLayout = React.createClass({
     return (
       <span>
         <div className="ui two item menu">
-          <a className="item">
+          <div className="item">
             <SearchBox/>
-          </a>
+          </div>
           <a className="item" onClick={this.logOut}>Logout</a>
         </div>
         {this.props.content}
