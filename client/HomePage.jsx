@@ -44,6 +44,8 @@ HomePage = React.createClass({
     this.loc= null;
   },
   render() {
+    console.log(this.data.otherUserLoc);
+    console.log(this.data.userLoc);
     return (
       <div>
         <h1>hp</h1>
