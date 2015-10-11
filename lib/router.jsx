@@ -16,7 +16,6 @@ FlowRouter.route("/navigate/:otherUserId", {
     }
     ReactLayout.render(MainLayout, {
       content: <HomePage
-                userid={Session.get('userId')}
                 otheruserid={otherUserId}
                 />
     });

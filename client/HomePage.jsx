@@ -1,10 +1,10 @@
 HomePage = React.createClass({
   propTypes: {
-    userid: React.PropTypes.string.isRequired,
     otheruserid: React.PropTypes.array.isRequired
   },
   mixins: [ReactMeteorData],
   getMeteorData() {
+    let userId = Meteor.userId();
     let otherUser = Locations.findOne({_id: this.props.otheruserid});
     if (otherUser) {
       this.otherUserLoc = otherUser;
@@ -12,9 +12,9 @@ HomePage = React.createClass({
 
     if(Geolocation.latLng()) {
       this.loc = Geolocation.latLng();
-      if(this.props.userid) {
-        if (Locations.findOne({_id: this.props.userid})) {
-          Locations.update({_id: this.props.userid},
+      if(userId) {
+        if (Locations.findOne({_id: userId})) {
+          Locations.update({_id: userId},
                          {$set: {location: this.loc}},
                          function(err) {
                            if (err) {
@@ -22,7 +22,7 @@ HomePage = React.createClass({
                            }
                          });
         } else {
-          Locations.insert({_id: this.props.userid,
+          Locations.insert({_id: userId,
                           location: this.loc},
                          function(err) {
                            if (err) {
@@ -44,8 +44,6 @@ HomePage = React.createClass({
     this.loc= null;
   },
   render() {
-    console.log(this.data.otherUserLoc);
-    console.log(this.data.userLoc);
     return (
       <div>
         <h1>hp</h1>
