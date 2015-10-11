@@ -12,18 +12,29 @@ HomePage = React.createClass({
     if(Geolocation.latLng()) {
       this.loc = Geolocation.latLng();
       console.log(this.loc);
-      Locations.update({_id: this.props.userid},
-                     {$set: {location: this.loc}},
-                     function(err) {
-                       if (err) {
-                         console.error(err);
-                       }
-                     });
+
+      if (Locations.findOne({_id: this.props.userid})) {
+        Locations.update({_id: this.props.userid},
+                       {$set: {location: this.loc}},
+                       function(err) {
+                         if (err) {
+                           console.error(err);
+                         }
+                       });
+      } else {
+        Locations.insert({_id: this.props.userid,
+                        location: this.loc},
+                       function(err) {
+                         if (err) {
+                           console.error(err);
+                         }
+                       });
+      }
     }
 
     return {
       userLoc: this.loc,
-      otherUserLoc: this.otherUserLoc
+      otherUserLoc: this.otherUserLoc ? this.otherUserLoc.location : null
     };
   },
   componentDidMount() {
