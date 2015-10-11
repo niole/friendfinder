@@ -5,8 +5,9 @@ HomePage = React.createClass({
   },
   mixins: [ReactMeteorData],
   getMeteorData() {
-    if (this.props.otheruserid) {
-      this.otherUserloc = Locations.find({_id: this.props.otheruserid});
+    let otherUser = Locations.findOne({_id: this.props.otheruserid});
+    if (otherUser) {
+      this.otherUserLoc = otherUser;
     }
 
     if(Geolocation.latLng()) {
