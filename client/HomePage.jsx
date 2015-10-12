@@ -1,11 +1,8 @@
 HomePage = React.createClass({
   propTypes: {
-    otheruserid: React.PropTypes.array.isRequired
+    otheruserid: React.PropTypes.string.isRequired
   },
   componentDidMount() {
-    if (!Meteor.userId()) {
-      FlowRouter.go('/');
-    }
     GoogleMaps.load();
     this.otherUserloc= null;
     this.loc= null;
@@ -22,8 +19,10 @@ HomePage = React.createClass({
       this.otherUserLoc = otherUser;
     }
 
-    if(Geolocation.latLng()) {
-      this.loc = Geolocation.latLng();
+    let latlng = Geolocation.latLng();
+
+    if(latlng) {
+      this.loc = latlng;
       if(userId) {
         this.updateLocation(userId, this.loc);
       }

@@ -9,6 +9,7 @@ Map = React.createClass({
   },
   mixins: [DrawPolyLineMixin, MakeMapMixin, ReactMeteorData],
   getMeteorData() {
+
     let coordArray = this.props.directions ? _.map(this.props.directions.steps, step => {
         return _.flatten([ step.start_location, step.end_location ]);
     }): null;

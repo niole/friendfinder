@@ -11,6 +11,7 @@ SearchBox = React.createClass({
     }.bind(this));
   },
   resetDD() {
+    React.findDOMNode(this.refs.findusers).value = '';
     this.setState({userData: []});
   },
   getUsers() {
@@ -35,7 +36,7 @@ SearchBox = React.createClass({
     return (
       <div>
         <div className="ui action input">
-          <input ref="findusers" type="text" placeholder="Search..."/>
+          <input ref="findusers" type="text" placeholder="Search for friends.."/>
           <button className="ui button" onClick={this.getUsers}>Search</button>
         </div>
         <div className="ui large middle aligned divided list dd" id="search-dd">

@@ -1,9 +1,6 @@
 FlowRouter.route("/", {
   action: function() {
     Session.set('loaded', false);
-    if (Meteor.userId()) {
-      FlowRouter.go("/navigate/0");
-    }
     ReactLayout.render(MainLayout, {
       content: <LoginSignup/>
     });
