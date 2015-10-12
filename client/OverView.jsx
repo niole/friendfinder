@@ -9,10 +9,10 @@ OverView = React.createClass({
     return (
       <div className="ui horizontal segments">
         <div className="ui segment">
-          <p>{this.props.startAddress}</p>
+          <p>start: {this.props.startAddress}</p>
         </div>
         <div className="ui segment">
-          <p>{this.props.endAddress}</p>
+          <p>end: {this.props.endAddress}</p>
         </div>
         <div className="ui segment">
           <p>{this.props.duration.text}</p>
