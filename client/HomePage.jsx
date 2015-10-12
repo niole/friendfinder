@@ -13,10 +13,11 @@ HomePage = React.createClass({
   getInitialState() {
     return {directions: null};
   },
-  mixins: [GetDirectionsMixin,ReactMeteorData],
+  mixins: [UpdateLocationMixin, GetDirectionsMixin, ReactMeteorData],
   getMeteorData() {
     let userId = Meteor.userId();
     let otherUser = Locations.findOne({_id: this.props.otheruserid});
+
     if (otherUser) {
       this.otherUserLoc = otherUser;
     }
@@ -24,25 +25,10 @@ HomePage = React.createClass({
     if(Geolocation.latLng()) {
       this.loc = Geolocation.latLng();
       if(userId) {
-        if (Locations.findOne({_id: userId})) {
-          Locations.update({_id: userId},
-                         {$set: {location: this.loc}},
-                         function(err) {
-                           if (err) {
-                             console.error(err);
-                           }
-                         });
-        } else {
-          Locations.insert({_id: userId,
-                          location: this.loc},
-                         function(err) {
-                           if (err) {
-                             console.error(err);
-                           }
-                         });
-        }
+        this.updateLocation(userId, this.loc);
       }
     }
+
     if (this.loc && this.otherUserLoc) {
       this.getDirections(this.loc, this.otherUserLoc, "driving");
     }
