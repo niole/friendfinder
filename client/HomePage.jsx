@@ -54,7 +54,6 @@ HomePage = React.createClass({
           userloc={this.data.userLoc}
           otheruserloc={this.data.otherUserLoc}
         />
-
       </div>
     );
   }

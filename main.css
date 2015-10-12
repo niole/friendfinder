@@ -1,8 +1,13 @@
 #gmap {
-  width: 600px;
+  width: 100%;
   height: 600px;
+}
+
+.inline {
+  display: inline-block;
 }
 
 .dd {
   position: absolute;
+  z-index: 1000;
 }

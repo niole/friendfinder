@@ -13,12 +13,11 @@ Directions = React.createClass({
       var dest = this.props.otheruserloc;
       //var mode="driving";
 
-      var apiKey ="AIzaSyA0aDt0DzPSZkTW0pHfHLNJ0tnfaCuf_Og";
+      var apiKey = "AIzaSyA0aDt0DzPSZkTW0pHfHLNJ0tnfaCuf_Og";
       var url = "https://maps.googleapis.com/maps/api/directions/json?origin="+
                 origin.lat+","+origin.lng+"&destination="+ dest.lat+","+dest.lng+/*"&mode="+mode+*/"&key="+apiKey;
       Meteor.call('getDirections', url, function(err, data) {
         if (!err) {
-
           this.setState({
              directions: {
                endAddress: data.data.routes[0].legs[0].end_address,
@@ -36,6 +35,16 @@ Directions = React.createClass({
     }
     return {};
   },
+  showOverview(directions) {
+    if (directions) {
+        return <OverView
+                endAddress={directions.endAddress}
+                distance={directions.distance}
+                duration={directions.duration}
+                startAddress={directions.startAddress}
+                />;
+    }
+  },
   showDirections(directions) {
     if (directions) {
       return _.map(directions.steps, (step,i) => {
@@ -44,10 +53,16 @@ Directions = React.createClass({
     }
   },
   render() {
+    if (this.state.directions) {
+      console.log(this.state.directions);
+    }
     return (
-      <ul>
-        {this.showDirections(this.state.directions)}
-      </ul>
+      <div>
+        {this.showOverview(this.state.directions)}
+        <ul>
+          {this.showDirections(this.state.directions)}
+        </ul>
+      </div>
     );
   }
 });
