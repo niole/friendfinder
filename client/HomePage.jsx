@@ -2,7 +2,15 @@ HomePage = React.createClass({
   propTypes: {
     otheruserid: React.PropTypes.array.isRequired
   },
-  mixins: [ReactMeteorData],
+  componentDidMount() {
+    GoogleMaps.load();
+    this.otherUserloc= null;
+    this.loc= null;
+  },
+  getInitialState() {
+    return {directions: null};
+  },
+  mixins: [GetDirectionsMixin,ReactMeteorData],
   getMeteorData() {
     let userId = Meteor.userId();
     let otherUser = Locations.findOne({_id: this.props.otheruserid});
@@ -32,25 +40,25 @@ HomePage = React.createClass({
         }
       }
     }
+    if (this.loc && this.otherUserLoc) {
+      this.getDirections(this.loc, this.otherUserLoc, "driving");
+    }
 
     return {
       userLoc: this.loc,
       otherUserLoc: this.otherUserLoc ? this.otherUserLoc.location : null
     };
   },
-  componentDidMount() {
-    GoogleMaps.load();
-    this.otherUserloc= null;
-    this.loc= null;
-  },
   render() {
     return (
       <div>
         <Map
+          directions={this.state.directions}
           userloc={this.data.userLoc}
           otheruserloc={this.data.otherUserLoc}
         />
         <Directions
+          directions={this.state.directions}
           userloc={this.data.userLoc}
           otheruserloc={this.data.otherUserLoc}
         />
