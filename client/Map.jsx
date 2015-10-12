@@ -6,7 +6,7 @@ Map = React.createClass({
   componentDidMount() {
     Session.set('loaded', true);
   },
-  mixins: [DrawPolyLineMixin, GetDirectionsMixin, MakeMapMixin, ReactMeteorData],
+  mixins: [DrawPolyLineMixin, MakeMapMixin, ReactMeteorData],
   getMeteorData() {
     if(GoogleMaps.loaded() && Session.get('loaded')) {
       this.makeMap('gmap', this.props.userloc, this.props.otheruserloc);

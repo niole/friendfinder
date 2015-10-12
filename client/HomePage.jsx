@@ -47,6 +47,10 @@ HomePage = React.createClass({
     return (
       <div>
         <h1>hp</h1>
+        <Directions
+          userloc={this.data.userLoc}
+          otheruserloc={this.data.otherUserLoc}
+        />
         <Map
           userloc={this.data.userLoc}
           otheruserloc={this.data.otherUserLoc}
