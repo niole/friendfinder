@@ -8,9 +8,10 @@ Direction = React.createClass({
     let dur = step.duration.text;
     let end = step.end_location;
     let start = step.start_location;
+
     return (
       <div className="ui orange segment">
-        {step.html_instructions}
+        <div dangerouslySetInnerHTML={{__html: step.html_instructions}} />
       </div>
     );
   },
