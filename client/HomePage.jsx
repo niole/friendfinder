@@ -59,8 +59,6 @@ HomePage = React.createClass({
         />
         <Directions
           directions={this.state.directions}
-          userloc={this.data.userLoc}
-          otheruserloc={this.data.otherUserLoc}
         />
       </div>
     );
