@@ -3,6 +3,9 @@ HomePage = React.createClass({
     otheruserid: React.PropTypes.array.isRequired
   },
   componentDidMount() {
+    if (!Meteor.userId()) {
+      FlowRouter.go('/');
+    }
     GoogleMaps.load();
     this.otherUserloc= null;
     this.loc= null;
