@@ -34,10 +34,10 @@ SearchBox = React.createClass({
   },
   render() {
     return (
-      <div>
+      <div >
         <div className="ui action input">
-          <input ref="findusers" type="text" placeholder="Search for friends.."/>
-          <button className="ui button" onClick={this.getUsers}>Search</button>
+          <input ref="findusers" type="text" placeholder="Find friends..." id="ff-searchbox"/>
+          <button className="ui button" onClick={this.getUsers} id="ff-searchbox-button">Go</button>
         </div>
         <div className="ui large middle aligned divided list dd" id="search-dd">
           {this.showResults(this.state.userData)}

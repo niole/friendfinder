@@ -2,9 +2,9 @@ MainLayout = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
     if (Meteor.user()) {
-      return {show: true};
+      return {show: true, width: $(window).width()};
     } else {
-      return {show: false};
+      return {show: false, width: $(window).width()};
     }
   },
   logOut() {
@@ -12,16 +12,31 @@ MainLayout = React.createClass({
     AccountsTemplates.logout();
     FlowRouter.go('/');
   },
-  showLoggedInLayout(show) {
+  showIcon(show) {
     if (show) {
-       return (
-        <div className="ui three item menu">
-          <div className="item">
-            <SearchBox/>
-          </div>
+      return (
           <div className="item">
             <i id="sec-fflogo" className="map icon"></i>
           </div>
+      );
+    }
+  },
+  showLoggedInLayout(show, width) {
+    let menuClass = "ui two item menu";
+    let getIcon = false;
+    if (width > 500) {
+      menuClass = "ui three item menu";
+      getIcon = true;
+    }
+
+
+    if (show) {
+       return (
+        <div className={menuClass}>
+          <div className="item">
+            <SearchBox/>
+          </div>
+          {this.showIcon(getIcon)}
           <a className="item" onClick={this.logOut}>Logout</a>
         </div>
        );
@@ -36,7 +51,7 @@ MainLayout = React.createClass({
   render() {
     return (
       <span>
-        {this.showLoggedInLayout(this.data.show)}
+        {this.showLoggedInLayout(this.data.show, this.data.width)}
         {this.props.content}
       </span>
     );
