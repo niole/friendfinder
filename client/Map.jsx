@@ -16,7 +16,6 @@ Map = React.createClass({
   render() {
     return (
       <div>
-        <h1>map</h1>
         <div id='gmap'>
         </div>
       </div>
