@@ -10,10 +10,7 @@ FlowRouter.route("/", {
 
 FlowRouter.route("/navigate/:otherUserId", {
   triggersEnter: [function(context, redirect) {
-      console.log('/navigate');
-
     if (!Meteor.user()) {
-      console.log('no user user rout');
       redirect('/');
     }
   }],

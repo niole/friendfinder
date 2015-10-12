@@ -5,7 +5,9 @@ LoginSignup = React.createClass({
   },
   render() {
     return (
-      <div id="LoginButtons">
+      <div>
+        <FFLogo/>
+        <div id="LoginButtons"/>
       </div>
     );
   }

@@ -24,7 +24,9 @@ MainLayout = React.createClass({
        );
     } else {
        return (
-        <div className="ui two item menu"/>
+        <div className="ui one item menu">
+          <i className="map icon"></i>
+        </div>
        );
     }
   },
