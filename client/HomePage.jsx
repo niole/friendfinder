@@ -14,12 +14,11 @@ HomePage = React.createClass({
   getMeteorData() {
     let userId = Meteor.userId();
     let otherUser = Locations.findOne({_id: this.props.otheruserid});
+    let latlng = Geolocation.latLng();
 
     if (otherUser) {
       this.otherUserLoc = otherUser;
     }
-
-    let latlng = Geolocation.latLng();
 
     if(latlng) {
       this.loc = latlng;
