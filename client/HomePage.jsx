@@ -28,18 +28,24 @@ HomePage = React.createClass({
       }
     }
 
-    if (this.loc && this.otherUserLoc) {
-      this.getDirections(this.loc, this.otherUserLoc, "driving");
-    }
-
     return {
       userLoc: this.loc,
       otherUserLoc: this.otherUserLoc ? this.otherUserLoc.location : null
     };
   },
+  showDirectionsButton(userloc, otheruserloc) {
+
+    if (userloc && otheruserloc) {
+       return <button onClick={this.getDirections.bind(this, userloc, otheruserloc, "driving")}
+                className="ui yellow button fullwidth">
+                Get Directions
+              </button>;
+    }
+  },
   render() {
     return (
       <div>
+        {this.showDirectionsButton(this.data.userLoc, this.data.otherUserLoc)}
         <Map
           directions={this.state.directions}
           userloc={this.data.userLoc}

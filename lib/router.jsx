@@ -9,11 +9,6 @@ FlowRouter.route("/", {
 });
 
 FlowRouter.route("/navigate/:otherUserId", {
-  triggersEnter: [function(context, redirect) {
-    if (!Meteor.user()) {
-      redirect('/');
-    }
-  }],
   action: function(params) {
     var otherUserId = null;
     if (params.otherUserId !== "0") {

@@ -7,6 +7,10 @@
   height: 600px;
 }
 
+#sec-fflogo {
+  font-size: 40px;
+}
+
 .inline {
   display: inline-block;
 }
@@ -14,4 +18,8 @@
 .dd {
   position: absolute;
   z-index: 1000;
+}
+
+.fullwidth {
+  width: 100%;
 }

@@ -15,9 +15,12 @@ MainLayout = React.createClass({
   showLoggedInLayout(show) {
     if (show) {
        return (
-        <div className="ui two item menu">
+        <div className="ui three item menu">
           <div className="item">
             <SearchBox/>
+          </div>
+          <div className="item">
+            <i id="sec-fflogo" className="map icon"></i>
           </div>
           <a className="item" onClick={this.logOut}>Logout</a>
         </div>
@@ -25,7 +28,7 @@ MainLayout = React.createClass({
     } else {
        return (
         <div className="ui one item menu">
-          <i className="map icon"></i>
+          <i id="sec-fflogo" className="map icon"></i>
         </div>
        );
     }

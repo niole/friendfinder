@@ -20,9 +20,6 @@ Directions = React.createClass({
     }
   },
   render() {
-    if (this.props.directions) {
-      console.log(this.props.directions);
-    }
     return (
       <div>
         {this.showOverview(this.props.directions)}
