@@ -52,8 +52,6 @@ HomePage = React.createClass({
   render() {
     return (
       <div>
-        <div dangerouslySetInnerHTML={{__html: "<b>hey</b>"}} />
-
         <Map
           directions={this.state.directions}
           userloc={this.data.userLoc}
