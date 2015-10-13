@@ -5,11 +5,6 @@ SearchBox = React.createClass({
   },
   componentDidMount() {
     const dd = document.getElementById('search-dd');
-    dd.addEventListener("click", function() {
-      event.preventDefault();
-      this.resetDD();
-    }.bind(this));
-
     dd.addEventListener("mouseleave", function() {
       event.preventDefault();
       this.resetDD();
@@ -32,7 +27,7 @@ SearchBox = React.createClass({
           <div className="ui yellow segment inline">
             <i className="smile icon inline"></i>
             <div className="content inline">
-              <a className="header" href={"/navigate/"+p._id}>{p.name}</a>
+              <a className="header" onClick={this.resetDD} href={"/navigate/"+p._id}>{p.name}</a>
             </div>
           </div>
         );
