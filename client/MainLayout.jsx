@@ -28,8 +28,6 @@ MainLayout = React.createClass({
       menuClass = "ui three item menu";
       getIcon = true;
     }
-
-
     if (show) {
        return (
         <div className={menuClass}>

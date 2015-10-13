@@ -23,9 +23,9 @@ SearchBox = React.createClass({
   showResults(profiles) {
     return  _.map(profiles, p => {
         return (
-          <div className="item">
-            <i className="smile icon"></i>
-            <div className="content">
+          <div className="ui yellow segment inline">
+            <i className="smile icon inline"></i>
+            <div className="content inline">
               <a className="header" href={"/navigate/"+p._id}>{p.name}</a>
             </div>
           </div>
@@ -39,7 +39,7 @@ SearchBox = React.createClass({
           <input ref="findusers" type="text" placeholder="Find friends..." id="ff-searchbox"/>
           <button className="ui button" onClick={this.getUsers} id="ff-searchbox-button">Go</button>
         </div>
-        <div className="ui large middle aligned divided list dd" id="search-dd">
+        <div className="ui segments large middle aligned divided list dd" id="search-dd">
           {this.showResults(this.state.userData)}
         </div>
       </div>
