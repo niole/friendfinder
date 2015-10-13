@@ -5,10 +5,16 @@ SearchBox = React.createClass({
   },
   componentDidMount() {
     const dd = document.getElementById('search-dd');
+    dd.addEventListener("click", function() {
+      event.preventDefault();
+      this.resetDD();
+    }.bind(this));
+
     dd.addEventListener("mouseleave", function() {
       event.preventDefault();
       this.resetDD();
     }.bind(this));
+
   },
   resetDD() {
     React.findDOMNode(this.refs.findusers).value = '';
