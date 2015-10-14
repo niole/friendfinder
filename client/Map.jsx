@@ -10,9 +10,16 @@ Map = React.createClass({
   mixins: [DrawPolyLineMixin, MakeMapMixin, ReactMeteorData],
   getMeteorData() {
 
-    let coordArray = this.props.directions ? _.map(this.props.directions.steps, step => {
-        return _.flatten([ step.start_location, step.end_location ]);
-    }): null;
+    let coordArray = [];
+    if ( this.props.directions ) {
+      _.forEach(this.props.directions.steps, step => {
+        coordArray.push(step.start_location);
+        coordArray.push(step.end_location);
+      });
+
+    } else {
+      coordArray = null;
+    }
 //    let coordArray = [this.props.userloc, this.props.otheruserloc];
 
     if(GoogleMaps.loaded() && Session.get('loaded')) {
